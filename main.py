@@ -18,16 +18,19 @@ def on_message(client, userdata, msg):
 
 @app.route('/', methods=['GET'])
 def check_detection():
-    client = mqtt.Client()  # Corrected this line
+    client = mqtt.Client()  
     client.on_connect = on_connect
     client.on_message = on_message
     client.connect("broker.emqx.io", 1883)
-    client.loop_start()  # Corrected this line
-    for i in range (0,10):
+    client.loop_start()  
+    
+    for i in range(10):  # Run for 10 iterations
         time.sleep(5)
         print("Detection Data", detection)
-        return render_template('index.html', status=int(detection))
-    client.loop_stop()
+    
+    client.loop_stop()  # Stop MQTT client loop after loop completion
+    
+    return render_template('index.html', status=int(detection))  # Moved outside the loop
 
 if __name__ == '__main__':
     app.run(port=5001)
