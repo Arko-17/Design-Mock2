@@ -1,0 +1,32 @@
+<html>
+	
+	<head>
+		<title>What Happens To The Boy, when he walks out of the room?</title>
+
+		<script>
+		window.setTimeout(function () {
+		window.location.reload();
+		},1000);
+
+		</script>
+	</head>
+<body>
+	{% if ((status)==0) %}
+		
+		<p> The BOY is outside the room! Switch off the lights!</p>
+
+		<img src="../static/boy-out-of-room.jpg" height="100%" width="100%">
+
+{% endif %}
+
+{%if ((status)==1) %}
+
+<p> The BOY is in his room! Switch on the lights!</p>
+
+		<img src="../static/boy-in-room.jpg" height="100%" width="100%">
+
+{% endif %}
+
+</body>
+
+</html>
